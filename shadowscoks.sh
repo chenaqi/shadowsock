@@ -821,10 +821,10 @@ Modify_config_all(){
     Modify_config_transfer
     Modify_config_forbid
 }
-Check_python(){
-    python_ver=`python2 -h`
-    if [[ -z ${python_ver} ]]; then
-        echo -e "${Info} 没有安装Python，开始安装..."
+Check_python2(){
+    python2_ver=`python2 -h`
+    if [[ -z ${python2_ver} ]]; then
+        echo -e "${Info} 没有安装python2，开始安装..."
         if [[ ${release} == "centos" ]]; then
             yum install -y python2
         else
@@ -918,7 +918,7 @@ Installation_dependency(){
         Debian_apt
     fi
     [[ ! -e "/usr/bin/unzip" ]] && echo -e "${Error} 依赖 unzip(解压压缩包) 安装失败，多半是软件包源的问题，请检查 !" && exit 1
-    Check_python
+    Check_python2
     #echo "nameserver 8.8.8.8" > /etc/resolv.conf
     #echo "nameserver 8.8.4.4" >> /etc/resolv.conf
     \cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
